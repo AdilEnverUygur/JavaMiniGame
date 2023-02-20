@@ -11,12 +11,13 @@ public class GameWin extends JFrame {
 
     //new Bg class
     Bg bg = new Bg();
-
     //new Line class
     Line line = new Line();
-
     //new Gold class
     Gold gold = new Gold();
+
+    //define a canvas
+    Image offScreenImage;
 
     // Create a launch method in the class to initialize window information
     void launch(){
@@ -57,9 +58,14 @@ public class GameWin extends JFrame {
     //Drawing method
     @Override
     public void paint(Graphics g) {
-        bg.paintSelf(g);
-        line.paintSelf(g);
-        gold.paintSelf(g);
+        offScreenImage = this.createImage(768,1000);
+        Graphics gImage = offScreenImage.getGraphics();
+
+        bg.paintSelf(gImage);
+        line.paintSelf(gImage);
+        gold.paintSelf(gImage);
+
+        g.drawImage(offScreenImage,0,0,null);
     }
 
     public static void main(String[] args) {
