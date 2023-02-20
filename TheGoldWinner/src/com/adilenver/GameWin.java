@@ -15,6 +15,9 @@ public class GameWin extends JFrame {
     //new Line class
     Line line = new Line();
 
+    //new Gold class
+    Gold gold = new Gold();
+
     // Create a launch method in the class to initialize window information
     void launch(){
         // First, set whether the window is visible
@@ -56,6 +59,7 @@ public class GameWin extends JFrame {
     public void paint(Graphics g) {
         bg.paintSelf(g);
         line.paintSelf(g);
+        gold.paintSelf(g);
     }
 
     public static void main(String[] args) {
