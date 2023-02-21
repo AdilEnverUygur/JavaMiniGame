@@ -12,7 +12,7 @@ public class GameWin extends JFrame {
     //new Bg class
     Bg bg = new Bg();
     //new Line class
-    Line line = new Line();
+    Line line = new Line(this);
     //new Gold class
     Gold gold = new Gold();
 

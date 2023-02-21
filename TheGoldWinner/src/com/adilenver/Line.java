@@ -18,9 +18,20 @@ public class Line {
 
     //direction Initially set to 1
     int dir = 1;
-
     //status 0 swing, 1 crawl, 2 take back
     int status ;
+
+    GameWin frame;
+    Line(GameWin frame){
+        this.frame = frame;
+    }
+
+    void logic(){
+        if (endX > this.frame.gold.x && endX < this.frame.gold.x + this.frame.gold.width
+        && endY > this.frame.gold.y && endY < this.frame.gold.y + this.frame.gold.height){
+            System.out.println(1);
+        }
+    }
 
     void lines(Graphics g){
         endX = (int) (x + length * Math.cos(n * Math.PI));
@@ -31,7 +42,7 @@ public class Line {
     }
 
     void paintSelf(Graphics g){
-
+        logic();
         switch (status){
             case 0 :
                 if (n < 0.1){
