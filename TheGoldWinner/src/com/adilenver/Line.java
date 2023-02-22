@@ -27,9 +27,11 @@ public class Line {
     }
 
     void logic(){
-        if (endX > this.frame.gold.x && endX < this.frame.gold.x + this.frame.gold.width
-        && endY > this.frame.gold.y && endY < this.frame.gold.y + this.frame.gold.height){
-            status = 3;
+        for (Object obj : this.frame.objectList) {
+            if (endX > obj.x && endX < obj.x + obj.width
+                    && endY > obj.y && endY < obj.y + obj.height) {
+                status = 3;
+            }
         }
     }
 
@@ -73,12 +75,15 @@ public class Line {
                 if (length > 100){
                     length = length - 10;
                     lines(g);
-                    this.frame.gold.x = endX - 26;
-                    this.frame.gold.y = endY;
-                }else {
-                    this.frame.gold.x = -150;
-                    this.frame.gold.y = -150;
-                    status = 0;
+                    for (Object obj : this.frame.objectList){
+                        obj.x = endX - 26;
+                        obj.y = endY;
+                        if (length <= 100){
+                            obj.x = -150;
+                            obj.y = -150;
+                            status = 0;
+                        }
+                    }
                 }
                 break;
             default:

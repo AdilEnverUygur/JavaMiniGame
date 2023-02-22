@@ -4,17 +4,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 // 1. Window drawing
 // extends JFrame- In this way, it has the function of creating a window and listening to mouse and keyboard events
 public class GameWin extends JFrame {
 
+    //Store golds,stone
+    List<Object> objectList = new ArrayList<>();
+
     //new Bg class
     Bg bg = new Bg();
     //new Line class
     Line line = new Line(this);
-    //new Gold class
-    Gold gold = new Gold();
+
+
+    //Because wo cannot write for loop directly in class, so we write for loop in code area
+    {
+        for (int i = 0; i < 3; i++) {
+            objectList.add(new Gold());    //new Gold class
+        }
+    }
 
     //define a canvas
     Image offScreenImage;
@@ -63,7 +74,10 @@ public class GameWin extends JFrame {
 
         bg.paintSelf(gImage);
         line.paintSelf(gImage);
-        gold.paintSelf(gImage);
+
+        for (Object obj:objectList){
+            obj.paintSelf(gImage);
+        }
 
         g.drawImage(offScreenImage,0,0,null);
     }
