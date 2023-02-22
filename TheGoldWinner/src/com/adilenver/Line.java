@@ -18,7 +18,7 @@ public class Line {
 
     //direction Initially set to 1
     int dir = 1;
-    //status 0 swing, 1 crawl, 2 take back
+    //status 0 swing, 1 crawl, 2 take back, 3 fetch return
     int status ;
 
     GameWin frame;
@@ -29,7 +29,7 @@ public class Line {
     void logic(){
         if (endX > this.frame.gold.x && endX < this.frame.gold.x + this.frame.gold.width
         && endY > this.frame.gold.y && endY < this.frame.gold.y + this.frame.gold.height){
-            System.out.println(1);
+            status = 3;
         }
     }
 
@@ -68,6 +68,19 @@ public class Line {
                 }else {
                     status = 0;
                 }
+                break;
+            case 3 :
+                if (length > 100){
+                    length = length - 10;
+                    lines(g);
+                    this.frame.gold.x = endX - 26;
+                    this.frame.gold.y = endY;
+                }else {
+                    this.frame.gold.x = -150;
+                    this.frame.gold.y = -150;
+                    status = 0;
+                }
+                break;
             default:
         }
 
