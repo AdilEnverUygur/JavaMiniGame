@@ -31,6 +31,7 @@ public class Line {
             if (endX > obj.x && endX < obj.x + obj.width
                     && endY > obj.y && endY < obj.y + obj.height) {
                 status = 3;
+                obj.flag = true;
             }
         }
     }
@@ -76,12 +77,15 @@ public class Line {
                     length = length - 10;
                     lines(g);
                     for (Object obj : this.frame.objectList){
-                        obj.x = endX - 26;
-                        obj.y = endY;
-                        if (length <= 100){
-                            obj.x = -150;
-                            obj.y = -150;
-                            status = 0;
+                        if (obj.flag){
+                            obj.x = endX - 26;
+                            obj.y = endY;
+                            if (length <= 100){
+                                obj.x = -150;
+                                obj.y = -150;
+                                obj.flag = false;
+                                status = 0;
+                            }
                         }
                     }
                 }

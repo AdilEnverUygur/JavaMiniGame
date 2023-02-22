@@ -11,6 +11,8 @@ public class Object {
     int height ;
     //image
     Image img;
+    //mark it can move or not
+    boolean flag;
 
     void paintSelf(Graphics g){
         g.drawImage(img,x,y,null);
