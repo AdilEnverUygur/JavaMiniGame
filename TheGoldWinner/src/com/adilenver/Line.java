@@ -78,7 +78,7 @@ public class Line {
                     lines(g);
                     for (Object obj : this.frame.objectList){
                         if (obj.flag){
-                            obj.x = endX - 26;
+                            obj.x = endX - obj.getWidth()/2;
                             obj.y = endY;
                             if (length <= 100){
                                 obj.x = -150;

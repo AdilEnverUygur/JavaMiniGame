@@ -18,4 +18,7 @@ public class Object {
         g.drawImage(img,x,y,null);
     }
 
+    public int getWidth() {
+        return width;
+    }
 }

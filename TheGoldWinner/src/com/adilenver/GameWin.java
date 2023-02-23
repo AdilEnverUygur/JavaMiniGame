@@ -25,6 +25,9 @@ public class GameWin extends JFrame {
         for (int i = 0; i < 3; i++) {
             objectList.add(new Gold());    //new Gold class
         }
+        for (int i = 0; i < 3; i++) {
+            objectList.add(new Rock());    //new Rock class
+        }
     }
 
     //define a canvas
