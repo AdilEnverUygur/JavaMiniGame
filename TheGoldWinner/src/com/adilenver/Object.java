@@ -13,6 +13,8 @@ public class Object {
     Image img;
     //mark it can move or not
     boolean flag;
+    //Quality
+    int m;
 
     void paintSelf(Graphics g){
         g.drawImage(img,x,y,null);

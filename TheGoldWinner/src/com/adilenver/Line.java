@@ -58,7 +58,7 @@ public class Line {
                 break;
             case 1 :
                 if (length < 500){
-                    length = length + 10;
+                    length = length + 5;
                     lines(g);
                 }else {
                     status = 2;
@@ -66,18 +66,20 @@ public class Line {
                 break;
             case 2 :
                 if (length > 100){
-                    length = length - 10;
+                    length = length - 5;
                     lines(g);
                 }else {
                     status = 0;
                 }
                 break;
             case 3 :
+                int m = 1;
                 if (length > 100){
-                    length = length - 10;
+                    length = length - 5;
                     lines(g);
                     for (Object obj : this.frame.objectList){
                         if (obj.flag){
+                            m = obj.m;
                             obj.x = endX - obj.getWidth()/2;
                             obj.y = endY;
                             if (length <= 100){
@@ -88,6 +90,11 @@ public class Line {
                             }
                         }
                     }
+                }
+                try {
+                    Thread.sleep(m);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
                 break;
             default:
