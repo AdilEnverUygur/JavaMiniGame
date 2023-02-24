@@ -22,8 +22,15 @@ public class GameWin extends JFrame {
 
     //Because wo cannot write for loop directly in class, so we write for loop in code area
     {
-        for (int i = 0; i < 3; i++) {
-            objectList.add(new Gold());    //new Gold class
+        for (int i = 0; i < 11; i++) {
+            double random = Math.random();
+            if (random < 0.3){
+                objectList.add(new GoldMini());    //new GoldMini class
+            } else if (random < 0.7) {
+                objectList.add(new Gold());    //new Gold class
+            }else {
+                objectList.add(new GoldPlus());    //new GoldPlus class
+            }
         }
         for (int i = 0; i < 3; i++) {
             objectList.add(new Rock());    //new Rock class
