@@ -19,21 +19,48 @@ public class GameWin extends JFrame {
     //new Line class
     Line line = new Line(this);
 
-
     //Because wo cannot write for loop directly in class, so we write for loop in code area
     {
+        //Is it possible to place
+        boolean isPlace = true;
         for (int i = 0; i < 11; i++) {
             double random = Math.random();
+            Gold gold; //Holds currently generated gold nuggets
             if (random < 0.3){
-                objectList.add(new GoldMini());    //new GoldMini class
+                gold = new GoldMini();    //new GoldMini class
             } else if (random < 0.7) {
-                objectList.add(new Gold());    //new Gold class
+                gold = new Gold();    //new Gold class
             }else {
-                objectList.add(new GoldPlus());    //new GoldPlus class
+                gold = new GoldPlus();    //new GoldPlus class
+            }
+
+            for (Object obj : objectList){
+                if (gold.getRec().intersects(obj.getRec())){
+                    //Cannot be placed, needs to be regenerated
+                    isPlace = false;
+                }
+            }
+            if (isPlace){
+                objectList.add(gold);
+            }else {
+                isPlace = true;
+                i--;
             }
         }
-        for (int i = 0; i < 3; i++) {
-            objectList.add(new Rock());    //new Rock class
+        for (int i = 0; i < 5; i++) {
+          Rock rock = new Rock();    //new Rock class
+            for (Object obj : objectList){
+                if (rock.getRec().intersects(obj.getRec())){
+                    //Cannot be placed, needs to be regenerated
+                    isPlace = false;
+                }
+            }
+            if (isPlace){
+                objectList.add(rock);
+            }else {
+                isPlace = true;
+                i--;
+            }
         }
     }
 

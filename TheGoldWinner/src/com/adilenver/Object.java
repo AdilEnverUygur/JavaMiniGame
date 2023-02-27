@@ -23,4 +23,9 @@ public class Object {
     public int getWidth() {
         return width;
     }
+
+    //Get rectangle
+    public Rectangle getRec(){
+        return new Rectangle(x,y,width,height);
+    }
 }
